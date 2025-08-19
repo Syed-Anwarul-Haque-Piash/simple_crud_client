@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { data, useLoaderData } from 'react-router-dom';
+import  { useState } from 'react';
+import {  Link, useLoaderData } from 'react-router-dom';
 
 const Users = () => {
     const loadedBuyers=useLoaderData();
@@ -24,7 +24,11 @@ const Users = () => {
         <div>
             <h2>{buyers.length}</h2>
             {
-                buyers.map(buyer=><p key={buyer._id}>{buyer.name}:{buyer.email} <button onClick={()=>handleDelete(buyer._id)}>X</button></p>)
+                buyers.map(buyer=><p key={buyer._id}>{buyer.name}:{buyer.email}
+                <Link to={`/update/${buyer._id}`}>
+                <button>Update</button>
+                </Link>
+                 <button onClick={()=>handleDelete(buyer._id)}>X</button></p>)
             }
         </div>
     );
